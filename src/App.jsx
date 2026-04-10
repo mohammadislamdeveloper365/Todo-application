@@ -1,11 +1,11 @@
 import React from "react";
-import Todo from "./components/todo/Todo";
+import TodoPage from "./pages/todopage/TodoPage";
 
 function App() {
   return (
     <div className="App">
       <h1>Todo app</h1>
-      <Todo />
+      <TodoPage />
     </div>
   );
 }

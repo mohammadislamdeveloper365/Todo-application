@@ -1,8 +1,36 @@
 import { useState } from "react";
+import Button from "../button/Button";
+import Input from "../input/Input";
+import styles from "./Todo.module.css";
 
-function Todo() {
+function Todo(props) {
   const [todo, setTodo] = useState("");
-  const 
+  const { handleAddTodo } = props;
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input {...getInputProps()} />
+      <Button {...getButtonProps()} />
+    </form>
+  );
+
+  function getInputProps() {
+    return {
+      className: styles.input,
+      type: "text",
+      name: "todo",
+      value: todo,
+      handleChange: handleTodoChange,
+    };
+  }
+
+  function getButtonProps() {
+    return {
+      className: styles.button,
+      type: "submit",
+      text: "Add Todo",
+    };
+  }
 
   function handleTodoChange(event) {
     setTodo(event.target.value);
@@ -10,15 +38,8 @@ function Todo() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(todo);
+    handleAddTodo(todo);
   }
-
-  return (
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <input type="text" value={todo} onChange={(e) => handleTodoChange(e)} />
-      <button type="submit">Add Todo</button>
-    </form>
-  );
 }
 
 export default Todo;
