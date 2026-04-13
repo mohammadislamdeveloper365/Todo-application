@@ -8,7 +8,7 @@ function Todo(props) {
   const { handleAddTodo } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <Input {...getInputProps()} />
       <Button {...getButtonProps()} />
     </form>
@@ -17,6 +17,7 @@ function Todo(props) {
   function getInputProps() {
     return {
       className: styles.input,
+      placeholder: "Enter a todo...",
       type: "text",
       name: "todo",
       value: todo,
@@ -28,7 +29,7 @@ function Todo(props) {
     return {
       className: styles.button,
       type: "submit",
-      text: "Add Todo",
+      text: "Add",
     };
   }
 
@@ -39,6 +40,7 @@ function Todo(props) {
   function handleSubmit(event) {
     event.preventDefault();
     handleAddTodo(todo);
+    setTodo("");
   }
 }
 

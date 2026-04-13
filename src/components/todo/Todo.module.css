@@ -4,3 +4,9 @@
 .input {
   margin-right: 0.5rem;
 }
+
+.form {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  padding: 1rem;
+}

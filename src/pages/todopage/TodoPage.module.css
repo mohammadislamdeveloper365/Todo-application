@@ -1,0 +1,13 @@
+.header {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.todoPage {
+  background-color: aliceblue;
+}
+
+.todoContainer {
+  margin: 0 auto;
+  max-width: 600px;
+}
