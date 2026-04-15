@@ -12,13 +12,17 @@ function TodoPage() {
       <Header title="Todo Application" className={styles.header} />
       <div className={styles.todoContainer}>
         <Todo handleAddTodo={handleAddTodo} />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} handleDeleteItem={handleDeleteItem} />
       </div>
     </div>
   );
 
   function handleAddTodo(todo) {
     setTodos([...todos, todo]);
+  }
+
+  function handleDeleteItem(todo) {
+    setTodos(todos.filter((item) => item.id !== todo.id));
   }
 }
 

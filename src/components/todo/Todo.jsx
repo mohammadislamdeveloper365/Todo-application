@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Button from "../button/Button";
 import Input from "../input/Input";
 import styles from "./Todo.module.css";
 
 function Todo(props) {
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState({ id: uuidv4(), name: "", done: false });
   const { handleAddTodo } = props;
 
   return (
@@ -20,7 +21,7 @@ function Todo(props) {
       placeholder: "Enter a todo...",
       type: "text",
       name: "todo",
-      value: todo,
+      value: todo.name,
       handleChange: handleTodoChange,
     };
   }
@@ -34,13 +35,13 @@ function Todo(props) {
   }
 
   function handleTodoChange(event) {
-    setTodo(event.target.value);
+    setTodo({ ...todo, name: event.target.value });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     handleAddTodo(todo);
-    setTodo("");
+    setTodo({ id: uuidv4(), name: "", done: false });
   }
 }
 
